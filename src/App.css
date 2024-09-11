@@ -1,38 +1,140 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background-color: #ff6f61;
+  padding: 20px;
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav ul {
+  list-style: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav ul li {
+  display: inline;
+  margin-right: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+footer {
+  background-color: #333;
   color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.love-card {
+  background-color: #ffe5e5;
+  border: 1px solid #ff6f61;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 20px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.click-me-button {
+  background-color: #ff6f61;
+  border: 1px solid #ff6f61;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.click-me-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ff6f61;
+  z-index: -1;
+  transition: filter 0.3s;
+}
+
+.click-me-button:hover::before {
+  filter: blur(5px);
+}
+
+.click-me-button:hover {
+  background-color: transparent;
+}
+
+.anniversary-message {
+  color: #ff6f61;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: fadeIn 2s ease-in-out, bounce 2s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hearts {
+  position: relative;
+  margin-top: 20px;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  position: absolute;
+  transform: rotate(-45deg);
+  animation: floatUp 3s infinite ease-in-out;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -15px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: 15px;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 0.5s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 1s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 1.5s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 2s; }
+
+@keyframes floatUp {
+  0% { bottom: 0; transform: scale(1) rotate(-45deg); opacity: 1; }
+  100% { bottom: 100px; transform: scale(1.5) rotate(-45deg); opacity: 0; }
 }
